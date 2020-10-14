@@ -14,18 +14,35 @@
 
 ## Items:
 - Lugares de interés.
-- Ubicación.
-- Fecha.
+    - Ubicación.
+    - Fecha.
 - Modificación.
+    - Fecha. 
 - Documentos.
+    - Nombre.
+    - Fecha.
 - Responsable.
+    - Nombre.
+    - DNI.
 - Sanciones.
 - Inversión.
+    - Nombre del inversor.
+    - Cantidad.
+    - Fecha.
 - Riqueza.
 - Mantenimiento (Protección).
+    - leyes.
+    - organismo encargado.
 - Empresas.
+    - Nombre.
 - Eventos.
+    - Ubicación.
+    - Nombre.
+    - Fecha.
+    - Responsable.
 - Organizadores.
+    - Nombre.
+    - DNI.
 - Valoraciones.
 
 ***
