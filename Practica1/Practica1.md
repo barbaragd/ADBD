@@ -31,8 +31,8 @@
     - Fecha.
 - Riqueza.
 - Mantenimiento (Protección).
-    - leyes.
-    - organismo encargado.
+    - Leyes.
+    - Organismo encargado.
 - Empresas.
     - Nombre.
 - Eventos.
