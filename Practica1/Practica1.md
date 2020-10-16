@@ -15,7 +15,8 @@
 ## Items:
 - Lugares de interés.
     - Ubicación.
-    - Fecha.
+    - Fecha.	
+    - Nombre.
 - Modificación.
     - Fecha. 
 - Documentos.
@@ -25,6 +26,8 @@
     - Nombre.
     - DNI.
 - Sanciones.
+    - Nombre.
+    - Fecha.
 - Inversión.
     - Nombre del inversor.
     - Cantidad.
@@ -44,7 +47,7 @@
     - Nombre.
     - DNI.
 - Valoraciones.
-
+    - Cantidad.
 ***
 
 ## Relaciones:
