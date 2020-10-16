@@ -69,7 +69,7 @@
 ### Responsables
 - Un responsable tendrá un elemento del patrimonio asignado.
 - Un responsable realizará modificaciones.
-- Un responsable cuenta con sanciones.
+- Un responsable cuenta con sanciones.VV
 - Un responsable habrá realizado eventos.
 - Un responsable se encarga de mantener el control de empresas y el mantenimiento de edificios.
 
