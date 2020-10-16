@@ -15,7 +15,7 @@
 ## Items:
 - Lugares de interés.
     - Ubicación.
-    - Fecha.	
+    - Fecha de construcción.	
     - Nombre.
 - Modificación.
     - Fecha. 
@@ -53,6 +53,7 @@
 ## Relaciones:
 ### Elementos del patrimonio
 - Un elemento del patrimonio estará en una ubicación.
+- Un elemento del patrimonio tendrá un nombre.
 - Un elemento del patrimonio se construyó en una fecha.
 - Un elemento del patrimonio ha sufrido alguna modificación.
 - Un elemento del patrimonio aparece en algún documento.
@@ -68,9 +69,9 @@
 
 ### Responsables
 - Un responsable tendrá un elemento del patrimonio asignado.
-- Un responsable realizará modificaciones.
-- Un responsable cuenta con sanciones.VV
-- Un responsable habrá realizado eventos.
+- Un responsable realizará algunas modificaciones.
+- Un responsable puede contar con sanciones.
+- Un responsable habrá realizado algún evento.
 - Un responsable se encarga de mantener el control de empresas y el mantenimiento de edificios.
 
 ### Eventos
