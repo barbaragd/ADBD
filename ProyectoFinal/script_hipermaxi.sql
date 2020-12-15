@@ -108,10 +108,10 @@ CREATE TABLE IF NOT EXISTS `SUPERMERCADO`.`compra` (
   `id_caja` VARCHAR(10) NOT NULL,
   `factura` VARCHAR(45) NOT NULL,
   `hora` TIME NULL,
-  `cliente_socio_codigo_cliente` VARCHAR(45) NOT NULL,
-  `cliente_NoSocio_codigo_cliente` VARCHAR(45) NOT NULL,
+  `cliente_socio_codigo_cliente` VARCHAR(45) NULL,
+  `cliente_NoSocio_codigo_cliente` VARCHAR(45) NULL,
   `supermercado_nombre` VARCHAR(20) NOT NULL,
-  PRIMARY KEY (`factura`, `cliente_socio_codigo_cliente`, `cliente_NoSocio_codigo_cliente`, `supermercado_nombre`),
+  PRIMARY KEY (`factura`, `supermercado_nombre`),
 --  INDEX `fk_compra_cliente_socio1_idx` (`cliente_socio_codigo_cliente` ASC) VISIBLE,
 --  INDEX `fk_compra_cliente_NoSocio1_idx` (`cliente_NoSocio_codigo_cliente` ASC) VISIBLE,
 --  INDEX `fk_compra_supermercado1_idx` (`supermercado_nombre` ASC) VISIBLE,
@@ -178,6 +178,16 @@ CREATE TABLE IF NOT EXISTS `SUPERMERCADO`.`compra_has_producto` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+DELIMITER $$
+USE `SUPERMERCADO`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `SUPERMERCADO`.`stock_AFTER_INSERT` AFTER INSERT ON `producto` FOR EACH ROW
+BEGIN
+  SELECT stock_almacen INTO @stock_almacen FROM producto WHERE NEW.id_producto = id_producto;
+  SELECT cantidad_producto INTO @cantidad_producto FROM compra_has_producto WHERE NEW.producto_id_producto = producto_id_producto;
+  UPDATE producto SET stock_almacen = @stock_almacen - @cantidad_producto WHERE NEW.id_producto = id_producto;
+END$$
+
+DELIMITER ;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
