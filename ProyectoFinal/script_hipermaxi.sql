@@ -59,9 +59,9 @@ CREATE TABLE IF NOT EXISTS `SUPERMERCADO`.`producto` (
   `stock_almacen` INT NOT NULL,
   `proveedor_nacional_nombre` VARCHAR(45) NULL,
   `proveedor_extranjero_nombre` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_producto`, `proveedor_nacional_nombre`, `proveedor_extranjero_nombre`),
-  INDEX `fk_producto_proveedor_nacional1_idx` (`proveedor_nacional_nombre` ASC) VISIBLE,
-  INDEX `fk_producto_proveedor_extranjero1_idx` (`proveedor_extranjero_nombre` ASC) VISIBLE,
+  PRIMARY KEY (`id_producto`),
+--  INDEX `fk_producto_proveedor_nacional1_idx` (`proveedor_nacional_nombre` ASC) VISIBLE,
+--  INDEX `fk_producto_proveedor_extranjero1_idx` (`proveedor_extranjero_nombre` ASC) VISIBLE,
   CONSTRAINT `fk_producto_proveedor_nacional1`
     FOREIGN KEY (`proveedor_nacional_nombre`)
     REFERENCES `SUPERMERCADO`.`proveedor_nacional` (`nombre`)
@@ -112,9 +112,9 @@ CREATE TABLE IF NOT EXISTS `SUPERMERCADO`.`compra` (
   `cliente_NoSocio_codigo_cliente` VARCHAR(45) NOT NULL,
   `supermercado_nombre` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`factura`, `cliente_socio_codigo_cliente`, `cliente_NoSocio_codigo_cliente`, `supermercado_nombre`),
-  INDEX `fk_compra_cliente_socio1_idx` (`cliente_socio_codigo_cliente` ASC) VISIBLE,
-  INDEX `fk_compra_cliente_NoSocio1_idx` (`cliente_NoSocio_codigo_cliente` ASC) VISIBLE,
-  INDEX `fk_compra_supermercado1_idx` (`supermercado_nombre` ASC) VISIBLE,
+--  INDEX `fk_compra_cliente_socio1_idx` (`cliente_socio_codigo_cliente` ASC) VISIBLE,
+--  INDEX `fk_compra_cliente_NoSocio1_idx` (`cliente_NoSocio_codigo_cliente` ASC) VISIBLE,
+--  INDEX `fk_compra_supermercado1_idx` (`supermercado_nombre` ASC) VISIBLE,
   CONSTRAINT `fk_compra_cliente_socio1`
     FOREIGN KEY (`cliente_socio_codigo_cliente`)
     REFERENCES `SUPERMERCADO`.`cliente_socio` (`codigo_cliente`)
@@ -141,8 +141,8 @@ CREATE TABLE IF NOT EXISTS `SUPERMERCADO`.`supermercado_has_producto` (
   `producto_id_producto` VARCHAR(45) NOT NULL,
   `stock_general` INT NOT NULL,
   PRIMARY KEY (`supermercado_nombre`, `producto_id_producto`),
-  INDEX `fk_supermercado_has_producto_producto1_idx` (`producto_id_producto` ASC) VISIBLE,
-  INDEX `fk_supermercado_has_producto_supermercado1_idx` (`supermercado_nombre` ASC) VISIBLE,
+--  INDEX `fk_supermercado_has_producto_producto1_idx` (`producto_id_producto` ASC) VISIBLE,
+--  INDEX `fk_supermercado_has_producto_supermercado1_idx` (`supermercado_nombre` ASC) VISIBLE,
   CONSTRAINT `fk_supermercado_has_producto_supermercado1`
     FOREIGN KEY (`supermercado_nombre`)
     REFERENCES `SUPERMERCADO`.`supermercado` (`nombre`)
@@ -164,8 +164,8 @@ CREATE TABLE IF NOT EXISTS `SUPERMERCADO`.`compra_has_producto` (
   `producto_id_producto` VARCHAR(45) NOT NULL,
   `cantidad_producto` INT NOT NULL,
   PRIMARY KEY (`compra_factura`, `producto_id_producto`),
-  INDEX `fk_compra_has_producto_producto1_idx` (`producto_id_producto` ASC) VISIBLE,
-  INDEX `fk_compra_has_producto_compra1_idx` (`compra_factura` ASC) VISIBLE,
+ -- INDEX `fk_compra_has_producto_producto1_idx` (`producto_id_producto` ASC) VISIBLE,
+ -- INDEX `fk_compra_has_producto_compra1_idx` (`compra_factura` ASC) VISIBLE,
   CONSTRAINT `fk_compra_has_producto_compra1`
     FOREIGN KEY (`compra_factura`)
     REFERENCES `SUPERMERCADO`.`compra` (`factura`)
