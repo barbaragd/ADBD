@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `SUPERMERCADO`.`compra` (
   `cliente_socio_codigo_cliente` VARCHAR(45) NULL,
   `cliente_NoSocio_codigo_cliente` VARCHAR(45) NULL,
   `supermercado_nombre` VARCHAR(20) NOT NULL,
-  PRIMARY KEY (`factura`, `supermercado_nombre`),
+  PRIMARY KEY (`factura`),
 --  INDEX `fk_compra_cliente_socio1_idx` (`cliente_socio_codigo_cliente` ASC) VISIBLE,
 --  INDEX `fk_compra_cliente_NoSocio1_idx` (`cliente_NoSocio_codigo_cliente` ASC) VISIBLE,
 --  INDEX `fk_compra_supermercado1_idx` (`supermercado_nombre` ASC) VISIBLE,
@@ -178,15 +178,25 @@ CREATE TABLE IF NOT EXISTS `SUPERMERCADO`.`compra_has_producto` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- DELIMITER $$
+-- USE `SUPERMERCADO`$$
+-- CREATE DEFINER = CURRENT_USER TRIGGER `SUPERMERCADO`.`bonificacion_BEFORE_INSERT` BEFORE INSERT ON `compra
+
 DELIMITER $$
 USE `SUPERMERCADO`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `SUPERMERCADO`.`stock_AFTER_INSERT` AFTER INSERT ON `producto` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `SUPERMERCADO`.`stock_BEFORE_INSERT` BEFORE INSERT ON `compra_has_producto` FOR EACH ROW
 BEGIN
-  SELECT stock_almacen INTO @stock_almacen FROM producto WHERE NEW.id_producto = id_producto;
-  SELECT cantidad_producto INTO @cantidad_producto FROM compra_has_producto WHERE NEW.producto_id_producto = producto_id_producto;
-  UPDATE producto SET stock_almacen = @stock_almacen - @cantidad_producto WHERE NEW.id_producto = id_producto;
+  SET @producto = NEW.producto_id_producto;
+  SET @cantidad_producto = NEW.cantidad_producto;
+  SELECT stock_general INTO @stock_general FROM supermercado_has_producto WHERE producto_id_producto = @producto;
+  SELECT stock_almacen INTO @stock_almacen FROM producto WHERE id_producto = @producto;
+  IF @stock_general > @cantidad_producto THEN
+    UPDATE producto SET stock_almacen = @stock_almacen - @cantidad_producto WHERE id_producto = @producto;
+    UPDATE supermercado_has_producto SET stock_general = @stock_general - @cantidad_producto WHERE producto_id_producto = @producto;
+  ELSE
+    SIGNAL SQLSTATE 'ERR0R' SET MESSAGE_TEXT = 'no hay stock suficiente del producto';
+  END IF;
 END$$
-
 DELIMITER ;
 
 SET SQL_MODE=@OLD_SQL_MODE;
