@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `SUPERMERCADO`.`cliente_socio` (
   `dirección` VARCHAR(45) NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
   `cuenta_bancaria` VARCHAR(45) NOT NULL,
-  `bonificación` DECIMAL(3) NOT NULL,
+  `bonificación` FLOAT NOT NULL,
   PRIMARY KEY (`codigo_cliente`))
 ENGINE = InnoDB;
 
@@ -78,9 +78,9 @@ CREATE TABLE IF NOT EXISTS `SUPERMERCADO`.`compra` (
   `cliente_NoSocio_codigo_cliente` INT NULL,
   `supermercado_nombre` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`factura`),
-  INDEX `fk_compra_cliente_socio1_idx` (`cliente_socio_codigo_cliente` ASC) VISIBLE,
-  INDEX `fk_compra_cliente_NoSocio1_idx` (`cliente_NoSocio_codigo_cliente` ASC) VISIBLE,
-  INDEX `fk_compra_supermercado1_idx` (`supermercado_nombre` ASC) VISIBLE,
+--  INDEX `fk_compra_cliente_socio1_idx` (`cliente_socio_codigo_cliente` ASC) VISIBLE,
+--  INDEX `fk_compra_cliente_NoSocio1_idx` (`cliente_NoSocio_codigo_cliente` ASC) VISIBLE,
+--  INDEX `fk_compra_supermercado1_idx` (`supermercado_nombre` ASC) VISIBLE,
   CONSTRAINT `fk_compra_cliente_socio1`
     FOREIGN KEY (`cliente_socio_codigo_cliente`)
     REFERENCES `SUPERMERCADO`.`cliente_socio` (`codigo_cliente`)
@@ -127,8 +127,8 @@ CREATE TABLE IF NOT EXISTS `SUPERMERCADO`.`supermercado_has_producto` (
   `producto_id_producto` INT NOT NULL,
   `stock_almacen` INT NOT NULL,
   PRIMARY KEY (`supermercado_nombre`, `producto_id_producto`),
-  INDEX `fk_supermercado_has_producto_producto1_idx` (`producto_id_producto` ASC) VISIBLE,
-  INDEX `fk_supermercado_has_producto_supermercado1_idx` (`supermercado_nombre` ASC) VISIBLE,
+--  INDEX `fk_supermercado_has_producto_producto1_idx` (`producto_id_producto` ASC) VISIBLE,
+--  INDEX `fk_supermercado_has_producto_supermercado1_idx` (`supermercado_nombre` ASC) VISIBLE,
   CONSTRAINT `fk_supermercado_has_producto_supermercado1`
     FOREIGN KEY (`supermercado_nombre`)
     REFERENCES `SUPERMERCADO`.`supermercado` (`nombre`)
@@ -150,8 +150,8 @@ CREATE TABLE IF NOT EXISTS `SUPERMERCADO`.`compra_has_producto` (
   `producto_id_producto` INT NOT NULL,
   `cantidad_producto` INT NOT NULL,
   PRIMARY KEY (`compra_factura`, `producto_id_producto`),
-  INDEX `fk_compra_has_producto_producto1_idx` (`producto_id_producto` ASC) VISIBLE,
-  INDEX `fk_compra_has_producto_compra1_idx` (`compra_factura` ASC) VISIBLE,
+--  INDEX `fk_compra_has_producto_producto1_idx` (`producto_id_producto` ASC) VISIBLE,
+--  INDEX `fk_compra_has_producto_compra1_idx` (`compra_factura` ASC) VISIBLE,
   CONSTRAINT `fk_compra_has_producto_compra1`
     FOREIGN KEY (`compra_factura`)
     REFERENCES `SUPERMERCADO`.`compra` (`factura`)
@@ -173,8 +173,8 @@ CREATE TABLE IF NOT EXISTS `SUPERMERCADO`.`producto_has_proveedor_nacional` (
   `proveedor_nacional_nombre` VARCHAR(45) NOT NULL,
   `cantidad` INT NOT NULL,
   PRIMARY KEY (`producto_id_producto`, `proveedor_nacional_nombre`),
-  INDEX `fk_producto_has_proveedor_nacional_proveedor_nacional1_idx` (`proveedor_nacional_nombre` ASC) VISIBLE,
-  INDEX `fk_producto_has_proveedor_nacional_producto1_idx` (`producto_id_producto` ASC) VISIBLE,
+--  INDEX `fk_producto_has_proveedor_nacional_proveedor_nacional1_idx` (`proveedor_nacional_nombre` ASC) VISIBLE,
+--  INDEX `fk_producto_has_proveedor_nacional_producto1_idx` (`producto_id_producto` ASC) VISIBLE,
   CONSTRAINT `fk_producto_has_proveedor_nacional_producto1`
     FOREIGN KEY (`producto_id_producto`)
     REFERENCES `SUPERMERCADO`.`producto` (`id_producto`)
@@ -196,8 +196,8 @@ CREATE TABLE IF NOT EXISTS `SUPERMERCADO`.`producto_has_proveedor_extranjero` (
   `proveedor_extranjero_nombre` VARCHAR(45) NOT NULL,
   `cantidad` INT NOT NULL,
   PRIMARY KEY (`producto_id_producto`, `proveedor_extranjero_nombre`),
-  INDEX `fk_producto_has_proveedor_extranjero_proveedor_extranjero1_idx` (`proveedor_extranjero_nombre` ASC) VISIBLE,
-  INDEX `fk_producto_has_proveedor_extranjero_producto1_idx` (`producto_id_producto` ASC) VISIBLE,
+--  INDEX `fk_producto_has_proveedor_extranjero_proveedor_extranjero1_idx` (`proveedor_extranjero_nombre` ASC) VISIBLE,
+--  INDEX `fk_producto_has_proveedor_extranjero_producto1_idx` (`producto_id_producto` ASC) VISIBLE,
   CONSTRAINT `fk_producto_has_proveedor_extranjero_producto1`
     FOREIGN KEY (`producto_id_producto`)
     REFERENCES `SUPERMERCADO`.`producto` (`id_producto`)
@@ -216,19 +216,116 @@ DELIMITER $$
 USE `SUPERMERCADO`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `SUPERMERCADO`.`stock_BEFORE_INSERT` BEFORE INSERT ON `compra_has_producto` FOR EACH ROW
 BEGIN
-SET @producto = NEW.producto_id_producto;
+  SET @producto = NEW.producto_id_producto;
   SET @cantidad_producto = NEW.cantidad_producto;
-  SELECT stock_almacen INTO @stock_almacen FROM supermercado_has_producto WHERE producto_id_producto = @producto;
-  SELECT stock_general INTO @stock_general FROM producto WHERE id_producto = @producto;
-  IF @stock_almacen > @cantidad_producto THEN
-    UPDATE producto SET stock_general = @stock_general - @cantidad_producto WHERE id_producto = @producto;
-    UPDATE supermercado_has_producto SET stock_almacen = @stock_almacen - @cantidad_producto WHERE producto_id_producto = @producto;
+
+  select supermercado_nombre into @supermercado from compra where factura = new.compra_factura;
+
+  SELECT stock_almacen INTO @stock_almacen FROM supermercado_has_producto WHERE producto_id_producto = @producto AND supermercado_nombre = @supermercado;
+  IF @stock_almacen >= @cantidad_producto THEN
+    UPDATE supermercado_has_producto SET stock_almacen = @stock_almacen - @cantidad_producto WHERE producto_id_producto = @producto AND supermercado_nombre = @supermercado;
   ELSE
     SIGNAL SQLSTATE 'ERR0R' SET MESSAGE_TEXT = 'No hay stock suficiente del producto';
   END IF;
 END$$
 
+DELIMITER ;
 
+
+DELIMITER $$
+USE `SUPERMERCADO`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `SUPERMERCADO`.`compra_bonificacion_AFTER_INSERT` AFTER INSERT ON `compra_has_producto` FOR EACH ROW
+BEGIN
+  DECLARE i INT DEFAULT 0;
+  select factura into @factura from compra where factura = new.compra_factura;
+  select cliente_socio_codigo_cliente into @cliente from compra where factura = new.compra_factura;
+  set @total = 0;
+  if @cliente is not NULL then
+    select bonificación into @bonificacion from cliente_socio where codigo_cliente = @cliente;
+
+    select count(compra_factura) into @n from compra_has_producto where compra_factura = @factura;
+    set i = 0;
+    while i < @n DO
+      select producto_id_producto into @id_producto from compra_has_producto where compra_factura = @factura limit i,1;
+      select precio into @precio from producto where id_producto = @id_producto;
+      select cantidad_producto into @cantidad from compra_has_producto where compra_factura = @factura limit i,1;
+      set @total := @total + (@cantidad * @precio);
+      set i := i + 1;
+    end while;
+
+    if @bonificacion > 1.0 then
+      SET @total_con_descuento = @total / @bonificacion;
+    end if;
+    if @total > 100 then
+      set @bonificacion = @bonificacion + 0.01;
+    end if;
+    UPDATE cliente_socio set bonificación = @bonificacion where codigo_cliente = @cliente;
+  end if;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+USE `SUPERMERCADO`$$
+
+CREATE DEFINER = CURRENT_USER TRIGGER `SUPERMERCADO`.`proveedor_AFTER_INSERT` AFTER INSERT ON `producto_has_proveedor_nacional` FOR EACH ROW
+BEGIN
+
+  DECLARE i INT DEFAULT 0;
+  select count(stock_almacen) into @numero_almacenes from supermercado_has_producto where producto_id_producto = NEW.producto_id_producto;
+  set i = 0;
+
+  while i < @numero_almacenes DO
+    SELECT stock_general INTO @stock_general FROM producto WHERE id_producto = NEW.producto_id_producto;
+    SELECT stock_almacen INTO @stock_almacen FROM supermercado_has_producto WHERE producto_id_producto = NEW.producto_id_producto limit i,1;
+
+    SELECT cantidad INTO @cantidad_suministrada_nacional FROM producto_has_proveedor_nacional WHERE producto_id_producto = NEW.producto_id_producto;
+
+    UPDATE producto SET stock_general = @stock_general + @cantidad_suministrada_nacional WHERE id_producto = NEW.producto_id_producto;
+
+    IF @stock_general >= 20 THEN
+      IF @stock_almacen < 10 THEN
+        UPDATE supermercado_has_producto SET stock_almacen = @stock_almacen + 20 where producto_id_producto = NEW.producto_id_producto;
+        UPDATE producto SET stock_general = @stock_general - 20 WHERE  id_producto = NEW.producto_id_producto;
+      END IF;
+    END IF;
+
+    set i := i + 1;
+
+  end while;
+
+END$$
+DELIMITER ;
+
+DELIMITER $$
+USE `SUPERMERCADO`$$
+
+CREATE DEFINER = CURRENT_USER TRIGGER `SUPERMERCADO`.`proveedor_extranjero_AFTER_INSERT` AFTER INSERT ON `producto_has_proveedor_extranjero` FOR EACH ROW
+BEGIN
+
+  DECLARE i INT DEFAULT 0;
+  select count(stock_almacen) into @numero_almacenes from supermercado_has_producto where producto_id_producto = NEW.producto_id_producto;
+  set i = 0;
+
+  while i < @numero_almacenes DO
+    SELECT stock_general INTO @stock_general FROM producto WHERE id_producto = NEW.producto_id_producto;
+    SELECT stock_almacen INTO @stock_almacen FROM supermercado_has_producto WHERE producto_id_producto = NEW.producto_id_producto limit i,1;
+
+    SELECT cantidad INTO @cantidad_suministrada_extranjero FROM producto_has_proveedor_extranjero WHERE producto_id_producto = NEW.producto_id_producto;
+
+    UPDATE producto SET stock_general = @stock_general + @cantidad_suministrada_extranjero WHERE id_producto = NEW.producto_id_producto;
+
+    IF @stock_general >= 20 THEN
+      IF @stock_almacen < 10 THEN
+        UPDATE supermercado_has_producto SET stock_almacen = @stock_almacen + 20 where producto_id_producto = NEW.producto_id_producto;
+        UPDATE producto SET stock_general = @stock_general - 20 WHERE id_producto = NEW.producto_id_producto;
+      END IF;
+    END IF;
+
+    set i := i + 1;
+
+  end while;
+
+END$$
 DELIMITER ;
 
 SET SQL_MODE=@OLD_SQL_MODE;
