@@ -79,7 +79,7 @@ INSERT INTO cliente_socio (codigo_cliente, CP, dni, dirección, nombre, cuenta_b
 INSERT INTO cliente_socio (codigo_cliente, CP, dni, dirección, nombre, cuenta_bancaria, bonificación) VALUES (7, 38670, '32786591K', 'Av. Maritima', 'Jesús Caro', 'ES469713XX', 1.0);
 INSERT INTO cliente_socio (codigo_cliente, CP, dni, dirección, nombre, cuenta_bancaria, bonificación) VALUES (8, 38489, '38962174S', 'Av. Olof Palme', 'Pamela Zhang', 'ES061837XX', 1.0);
 
-INSERT INTO compra (fecha, id_caja, factura, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-02', 1, 1, 1, 'Hipermaxi');
+INSERT INTO compra (fecha, id_caja, factura, hora, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-02', 1, 1, '17:30' ,1, 'Hipermaxi');
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (1, 1, 5);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (1, 2, 5);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (1, 3, 3);
@@ -88,13 +88,13 @@ INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (1, 6, 3);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (1, 7, 2);
 
-INSERT INTO compra (fecha, id_caja, factura, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-02', 1, 2, 2, 'Hipermaxi');
+INSERT INTO compra (fecha, id_caja, factura, hora, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-02', 1, 2, '18:30', 2, 'Hipermaxi');
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (2, 8, 10);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (2, 9, 2);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (2, 3, 8);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (2, 5, 11);
 
-INSERT INTO compra (fecha, id_caja, factura, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-03', 1, 3, 3, 'Super Chamorga');
+INSERT INTO compra (fecha, id_caja, factura, hora, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-03', 1, 3, '17:30', 3, 'Super Chamorga');
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (3, 3, 4);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (3, 7, 6);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (3, 8, 2);
@@ -102,32 +102,32 @@ INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (3, 6, 3);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (3, 9, 2);
 
-INSERT INTO compra (fecha, id_caja, factura, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-03', 2, 4, 4, 'Super Luci');
+INSERT INTO compra (fecha, id_caja, factura, hora, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-03', 2, 4, '10:30', 4, 'Super Luci');
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (4, 2, 4);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (4, 4, 4);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (4, 6, 6);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (4, 5, 7);
 
-INSERT INTO compra (fecha, id_caja, factura, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-04', 3, 5, 5, 'Super Luci');
+INSERT INTO compra (fecha, id_caja, factura, hora, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-04', 3, 5, '17:30', 5, 'Super Luci');
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (5, 1, 3);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (5, 7, 7);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (5, 9, 6);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (5, 3, 8);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (5, 4, 8);
 
-INSERT INTO compra (fecha, id_caja, factura, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-05', 2, 6, 6, 'Super Chamorga');
+INSERT INTO compra (fecha, id_caja, factura, hora, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-05', 2, 6, '14:00', 6, 'Super Chamorga');
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (6, 3, 2);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (6, 4, 2);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (6, 6, 2);
 
-INSERT INTO compra (fecha, id_caja, factura, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-06', 1, 7, 7, 'Hiper Taucho');
+INSERT INTO compra (fecha, id_caja, factura, hora, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-06', 1, 7, '13:00', 7, 'Hiper Taucho');
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (7, 10, 3);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (7, 3, 7);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (7, 5, 6);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (7, 7, 8);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (7, 9, 8);
 
-INSERT INTO compra (fecha, id_caja, factura, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-06', 1, 8, 8, 'Hiper Taucho');
+INSERT INTO compra (fecha, id_caja, factura, hora, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-06', 1, 8, '17:30', 8, 'Hiper Taucho');
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (8, 2, 1);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (8, 3, 2);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (8, 6, 6);
@@ -135,11 +135,11 @@ INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (8, 8, 1);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (8, 9, 2);
 
-INSERT INTO compra (fecha, id_caja, factura, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-06', 2, 9, 4, 'Super Luci');
+INSERT INTO compra (fecha, id_caja, factura, hora, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-06', 2, 9, '19:00', 4, 'Super Luci');
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (9, 8, 1);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (9, 4, 4);
 
-INSERT INTO compra (fecha, id_caja, factura, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-07', 2, 10, 5, 'Super Toño');
+INSERT INTO compra (fecha, id_caja, factura, hora, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-07', 2, 10, '20:30', 5, 'Super Toño');
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (10, 1, 1);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (10, 3, 9);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (10, 2, 2);
@@ -149,13 +149,13 @@ INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (10, 9, 4);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (10, 10, 3);
 
-INSERT INTO compra (fecha, id_caja, factura, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-07', 2, 11, 1, 'Super Toño');
+INSERT INTO compra (fecha, id_caja, factura, hora, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-07', 2, 11, '19:30', 1, 'Super Toño');
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (11, 1, 2);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (11, 8, 1);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (11, 2, 5);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (11, 9, 7);
 
-INSERT INTO compra (fecha, id_caja, factura, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-07', 3, 12, 6, 'Super Chamorga');
+INSERT INTO compra (fecha, id_caja, factura, hora, cliente_socio_codigo_cliente, supermercado_nombre) VALUES ('2020-12-07', 3, 12, '20:30', 6, 'Super Chamorga');
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (12, 1, 7);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (12, 3, 4);
 INSERT INTO compra_has_producto (compra_factura, producto_id_producto, cantidad_producto)  VALUES (12, 7, 3);
