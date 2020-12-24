@@ -70,10 +70,10 @@ _HIPERMAXI_.
 
 [Enlace fichero en Drive](https://docs.google.com/document/d/1vJ4jv6-dewMLYebX1AJ9ULqw35Ozzp8XWgYgQoqBTZk/edit?usp=sharing)
 
-[Enlace fichero GitHub]()
+[Enlace fichero GitHub](FicherosEntrega/PruebasInsercionConsultasActualizaciones.pdf)
 
 ## Distribución del trabajo <a name="id9"></a>
 
 [Enlace fichero en Drive](https://docs.google.com/spreadsheets/d/1R9xh1rUozo0ALwuKw0e6aCe9nvjQCq6py9_NN8HT0Rw/edit?usp=sharing)
 
-[Enlace fichero GitHub](FicherosEntrega/PruebasInsercionConsultasActualizaciones.pdf)
+[Enlace fichero GitHub]()
