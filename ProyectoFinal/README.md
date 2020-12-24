@@ -76,4 +76,4 @@ _HIPERMAXI_.
 
 [Enlace fichero en Drive](https://docs.google.com/spreadsheets/d/1R9xh1rUozo0ALwuKw0e6aCe9nvjQCq6py9_NN8HT0Rw/edit?usp=sharing)
 
-[Enlace fichero GitHub](ProyectoFinal/FicherosEntrega/Pruebas_de_inserción,_consultas_y_actualizaciones.pdf)
+[Enlace fichero GitHub](FicherosEntrega/PruebasInsercionConsultasActualizaciones.pdf)
