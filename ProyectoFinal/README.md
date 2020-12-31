@@ -14,11 +14,13 @@
 2. [Requisitos](#id2)
 3. [Modelo Cenceptual. (ER/E)](#id3)
 4. [Modelo Lógico Relacional.](#id4)
-5. [Modelo Lógico Objeto-Relacional. (UML)](#id5)
-6. [Generación de código.](#id6)
-7. [Carga de datos.](#id7)
-8. [Pruebas de inserción, consultas y actualizaciones.](#id8)
-9. [Distribución del trabajo.](#id9)
+5. [Generación de código.](#id5)
+6. [Carga de datos.](#id6)
+7. [Distribución del trabajo.](#id7)
+8. [Script carga BBDD.](#id8)
+9. [Trigger bonificación.](#id9)
+10. [Trigger proveedores.](#id10)
+11. [Trigger stock.](#id11)
 
 ---
 
@@ -34,46 +36,53 @@ _HIPERMAXI_.
 
 [Enlace fichero en Drive](https://docs.google.com/document/d/1x1zKe4qojsrgphWF1TvgbND3Ts7qp3SP8CeBYcDKinc/edit?usp=sharing)
 
-[Enlace fichero GitHub]()
+[Enlace fichero GitHub](FicherosEntrega/PropuestaDeRequisitos.pdf)
 
 ## Modelo Cenceptual. (ER/E) <a name="id3"></a>
 
 [Enlace fichero en Drive](https://drive.google.com/file/d/1GJy4JfNPx39tZcfFZRh8x21HysxDYN7n/view?usp=sharing)
 
-[Enlace fichero GitHub]()
+[Enlace fichero GitHub](FicherosEntrega/ERE.pdf)
 
 ## Modelo Lógico Relacional. <a name="id4"></a>
 
 [Enlace fichero en Drive](https://docs.google.com/document/d/1WlTSTlUDNsyYXpTW4bwEPIpKKr12KX07K2EUqJgHf_o/edit?usp=sharing)
 
-[Enlace fichero GitHub]()
+[Enlace fichero GitHub](FicherosEntrega/GrafoRelacional.pdf)
 
-## Modelo Lógico Objeto-Relacional. (UML) <a name="id5"></a>
-
-[Enlace fichero en Drive](https://docs.google.com/document/d/1zJbFIgZ10moBuEPyg-sOZigqiQVZBPQT6U_azwMDmhU/edit?usp=sharing)
-
-[Enlace fichero GitHub]()
-
-## Generación de código. <a name="id6"></a>
+## Generación de código. <a name="id5"></a>
 
 [Enlace fichero en Drive](https://docs.google.com/document/d/1wRnqzZpHHJnkk3bldhIyVxk9te2iULk8bCKJSpr-YXE/edit?usp=sharing)
 
-[Enlace fichero GitHub]()
+[Enlace fichero GitHub](FicherosEntrega/ScriptCreacion.pdf)
 
-## Carga de datos. <a name="id7"></a>
+## Carga de datos. <a name="id6"></a>
 
 [Enlace fichero en Drive](https://docs.google.com/document/d/1j1kHPoKIRMANl5rRZBUuT4MysdHT38u8KqquDptlNjo/edit?usp=sharing)
 
-[Enlace fichero GitHub]()
+[Enlace fichero GitHub](FicherosEntrega/CSI8.pdf)
 
-## Pruebas de inserción, consultas y actualizaciones. <a name="id8"></a>
-
-[Enlace fichero en Drive](https://docs.google.com/document/d/1vJ4jv6-dewMLYebX1AJ9ULqw35Ozzp8XWgYgQoqBTZk/edit?usp=sharing)
-
-[Enlace fichero GitHub](FicherosEntrega/PruebasInsercionConsultasActualizaciones.pdf)
-
-## Distribución del trabajo <a name="id9"></a>
+## Distribución del trabajo <a name="id7"></a>
 
 [Enlace fichero en Drive](https://docs.google.com/spreadsheets/d/1R9xh1rUozo0ALwuKw0e6aCe9nvjQCq6py9_NN8HT0Rw/edit?usp=sharing)
 
-[Enlace fichero GitHub]()
+[Enlace fichero GitHub](FicherosEntrega/DistribucionDeTrabajo.pdf)
+
+## Script carga BBDD <a name="id8"></a>
+
+[Enlace fichero](script_hipermaxi.sql)
+
+
+## Trigger bonificación <a name="id9"></a>
+
+[Enlace fichero](trigger_bonificacion.sql)
+
+
+## Trigger proveedores <a name="id10"></a>
+
+[Enlace fichero](trigger_proveedor.sql)
+
+
+## Trigger stock <a name="id11"></a>
+
+[Enlace fichero](trigger_stock.sql)
