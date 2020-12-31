@@ -21,6 +21,7 @@
 9. [Trigger bonificación.](#id9)
 10. [Trigger proveedores.](#id10)
 11. [Trigger stock.](#id11)
+12. [Documento de pruebas de inserción, consultas y actualizaciones..](#id11)
 
 ---
 
@@ -86,3 +87,10 @@ _HIPERMAXI_.
 ## Trigger stock <a name="id11"></a>
 
 [Enlace fichero](trigger_stock.sql)
+
+## Documento de pruebas de inserción, consultas y actualizaciones. <a name="id12"></a>
+
+[Enlace fichero en Drive](https://docs.google.com/document/d/1vJ4jv6-dewMLYebX1AJ9ULqw35Ozzp8XWgYgQoqBTZk/edit?usp=sharing)
+
+
+[Enlace fichero GitHub](FicherosEntrega/PruebasDeInserciónConsultasActualizaciones.pdf)
