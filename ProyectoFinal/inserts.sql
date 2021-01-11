@@ -187,6 +187,8 @@ INSERT INTO producto_has_proveedor_extranjero (producto_id_producto, proveedor_e
 INSERT INTO producto_has_proveedor_extranjero (producto_id_producto, proveedor_extranjero_nombre, cantidad) VALUES (8, 'Procter & Gamble', 1050);
 INSERT INTO producto_has_proveedor_nacional (producto_id_producto, proveedor_nacional_nombre, cantidad) VALUES (9, 'ForDogs', 670);
 INSERT INTO producto_has_proveedor_nacional (producto_id_producto, proveedor_nacional_nombre, cantidad) VALUES (10, 'Laliflor', 100);
+INSERT INTO producto_has_proveedor_extranjero (producto_id_producto, proveedor_extranjero_nombre, cantidad) VALUES (10, 'Mac donald', 100);
+INSERT INTO producto_has_proveedor_extranjero (producto_id_producto, proveedor_extranjero_nombre, cantidad) VALUES (1, 'Marcha.2', 100);
 
 select * from producto;
 select * from supermercado_has_producto;
